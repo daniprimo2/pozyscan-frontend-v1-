@@ -13,10 +13,15 @@ function PaginaHome() {
 
   return (
     <Layout>
-      {loading ? (<LoadingSpinner mensagem={"Carregando pagina home"}/>):(<PaginaEmDesenvolvimento />)}
       
     </Layout>
   )
 }
 
 export default PaginaHome
+
+/*
+
+      {loading ? (<LoadingSpinner mensagem={"Carregando pagina home"}/>):(<PaginaEmDesenvolvimento />)}
+
+*/
