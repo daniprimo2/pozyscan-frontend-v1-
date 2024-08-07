@@ -12,7 +12,7 @@ function Campo({nomeMenu, listaSubMenus}) {
   return (
     <>
             <ul className={mostraMenu ? "selecionado" : "nao-selecionado"} onClick={() => setMostraMenu(!mostraMenu)}>
-            <li><Link to={"/home"}>{mostraMenu ?  <SlArrowDown /> : <SlArrowRight/>} {nomeMenu}</Link></li>
+            <li><Link>{mostraMenu ?  <SlArrowDown /> : <SlArrowRight/>} {nomeMenu}</Link></li>
 
             {mostraMenu && (
                 <div className="sub-menu">
