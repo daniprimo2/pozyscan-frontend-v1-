@@ -13,7 +13,7 @@ function PaginaHome() {
 
   return (
     <Layout>
-      
+      <PaginaEmDesenvolvimento />
     </Layout>
   )
 }
