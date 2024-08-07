@@ -50,13 +50,6 @@ function NovoUsuario() {
     ]
 
 
-    const sampleData = [
-        { id: 1, attr1: 'Valor 1A', attr2: 'Valor 1B', attr3: 'Valor 1C', attr4: 'Valor 1D' },
-        { id: 2, attr1: 'Valor 2A', attr2: 'Valor 2B', attr3: 'Valor 2C', attr4: 'Valor 2D' },
-        { id: 3, attr1: 'Valor 2A', attr2: 'Valor 2B', attr3: 'Valor 2C', attr4: 'Valor 5' },
-        // Adicione mais dados conforme necessário
-      ];
-
   return (
     <Layout>
         <div className="container">
@@ -64,7 +57,7 @@ function NovoUsuario() {
             <div className="sessoes">
                 <InputPadrao type={'text'} label={"Nome"} dado={nome} setDado={setNome}/>
                 <InputPadrao type={'text'} label={"Email"} dado={email} setDado={setEmail}/>
-                <InputSelect label={"Selecione cargo: "}
+                <InputSelect label={"Selecione categoria: "}
                              placeholder={"Categoria"}
                              listaOpcoes={listaCategoria}
                              dado={cargo}
