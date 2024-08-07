@@ -1,0 +1,109 @@
+@use 'variables'
+
+#login
+    display: flex
+    background: variables.$cor-linear-login
+    justify-content: center
+    align-items: center
+    width: variables.$login-width
+    max-width: variables.$max-login-width
+    height: variables.$login-height
+    max-height: variables.$max-login-height
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    border: 2px solid rgb(15, 6, 41)
+    border-radius: 2rem
+    box-shadow: 0 0 10px #3d3d3d
+
+    form
+        background-color: transparent
+
+    h1
+        text-align: center
+        font-size: 43px
+        color: transparent
+        background: linear-gradient(to top, #3d3d3d, #3d3d3d)
+        -webkit-background-clip: text
+        background-clip: text
+        text-shadow: 1px 1px 5px #e8114b
+        margin: 15px
+    #campo-credenciais
+        display: flex
+        flex-direction: column
+        background-color: transparent
+        backdrop-filter: blur(10px)
+        padding-right: 15%
+        padding-left: 15%
+        padding-top: 5%
+        padding-bottom: 15%
+        border-radius: 1rem
+
+        .campo
+            display: flex
+            position: relative
+            background-color: transparent
+            width: 100%
+            height: 50px
+            margin: 22px auto
+            input
+                width: 100%
+                height: 100%
+                background-color: transparent
+                outline: none
+                border: 4px solid #e8114b
+                border-radius: 40px
+                font-size: 15px
+                font-weight: 700
+                padding: 20px
+                color: #f6f6f6
+            .icon
+                position: absolute
+                right: 25px
+                top: 35%
+                transform: translate(-50%)
+                font-size: 16px
+                color: #e8114b
+                background-color: transparent
+        .lembra
+            display: flex
+            font-size: 9.2px
+            justify-content: space-between
+            margin: -15px 0 20px
+            background-color: transparent
+            margin-top: 3px
+            label
+                background-color: transparent
+                color: #fff
+            a
+                color: #fff
+                text-decoration: none
+                background-color: transparent
+                padding-top: 2px
+            a:hover
+                text-decoration: underline
+            input
+                margin-right: 5px
+        .botao
+            width: 100%
+            height: 50px
+            background-color: #fff
+            border: none
+            outline: none
+            border-radius: 40px
+            box-shadow: 0 0 10px #000
+            cursor: pointer
+            font-size: 18px
+            font-weight: 500
+            text-shadow: none
+        
+        .botao:hover
+            background: variables.$cor-linear-login
+            box-shadow: 0 0 20px variables.$cor-segundaria
+            color: #fff
+        .botao:active
+            transform: translateY(1px)
+
+ 
+
