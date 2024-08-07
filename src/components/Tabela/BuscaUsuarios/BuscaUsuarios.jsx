@@ -68,6 +68,7 @@ function BuscaUsuarios({atualziarPeloAdicionar}) {
         deleteUsuario(id)
           .then((resp) => {
             toast.success(resp.data.descricao)
+            setAtualziar(!atualizar)
           }).catch((e) => {
             toast.error("Usuario nao foi encontrado.")
           })
