@@ -12,7 +12,7 @@ function MenuLateral({mostra, mostraSubMenu, setMostraSubMenu, nomeMenu}) {
     ];
 
     const menuFornecedor = [
-        {path: "/home", label: "Novo Fornecedor"},
+        {path: "/novoFornecedor", label: "Novo Fornecedor"},
         {path: "/home", label: "Buscar Fornecedor"},
         {path: "/home", label: "Deletar Fornecedor"}
     ];

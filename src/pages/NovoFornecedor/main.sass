@@ -7,6 +7,8 @@
     height: 100%
     padding: 2rem
     background-color: #eeeeee
+    #contas
+        padding-top: 2rem
     h1
         display: flex
         color: #190952ce
@@ -45,9 +47,54 @@
 
 .button
     flex-direction: column
-    align-items: end  
+    align-items: end
 
+.quadro
+    background-color: white
+    border: 3px solid #190952ce
+    border-radius: 10px
+    padding: 20px
+    height: 20rem
+    margin-top: 2rem 
+    table
+        width: 100%
+        justify-items: end
+        th
+            background-color: #190952ce
+            color: white
+        td
+            border: 1px solid #ddd
+            padding: 8px
+            text-align: center
+        #idContato
+            font-weight: 700
+            color: #190952ce
+            font-size: 15px
+    .sem-contato
+        font-weight: 500
+        font-size: 2rem
+        width: 100%
+        text-align: center
+        align-content: center
+        color: #190952ce
+        
+
+    
 @media (max-width: 900px)
     .sessoes
         display: flex
         flex-direction: column
+        .botao
+            font-size: 10px
+            margin-top: 2rem
+            svg
+                font-size: 10px
+                margin-right: 5px
+        h1
+            font-size: 30px
+        h1 svg
+            font-size: 30px
+    .contato
+        flex-direction: row
+
+    
