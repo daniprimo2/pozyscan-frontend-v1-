@@ -3,6 +3,7 @@ import Login from "../pages/Login/Login"
 import PaginaHome from "../pages/Home/PaginaHome"
 import NovoUsuario from "../pages/NovoUsuario/NovoUsuario"
 import NovaFilial from "../pages/novaFilial/NovaFilial"
+import NovaAplicacao from "../pages/NovaAplicacao/NovaAplicacao"
 
 function Rotas() {
   return (
@@ -13,6 +14,7 @@ function Rotas() {
                 <Route path="/home" element={<PaginaHome />}/>
                 <Route path="/novoUsuario" element={<NovoUsuario />}/>
                 <Route path="/novaFilial" element={<NovaFilial />}/>
+                <Route path="/novaAplicacao" element={<NovaAplicacao />}/>
             </Routes>
         </Router>
     </>

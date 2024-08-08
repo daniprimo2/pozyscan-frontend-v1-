@@ -57,8 +57,8 @@ function NovoUsuario() {
             <div className="sessoes">
                 <InputPadrao type={'text'} label={"Nome"} dado={nome} setDado={setNome}/>
                 <InputPadrao type={'text'} label={"Email"} dado={email} setDado={setEmail}/>
-                <InputSelect label={"Selecione categoria: "}
-                             placeholder={"Categoria"}
+                <InputSelect label={"Selecione Cargo: "}
+                             placeholder={"Cargo"}
                              listaOpcoes={listaCategoria}
                              dado={cargo}
                              setDado={setCargo}/>

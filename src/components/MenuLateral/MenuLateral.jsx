@@ -6,7 +6,9 @@ function MenuLateral({mostra, mostraSubMenu, setMostraSubMenu, nomeMenu}) {
  
     const menuAdministracao = [
         {path: "/novoUsuario", label: "Novo Usuario"},
-        {path: "/novaFilial", label: "Nova Filial"}
+        {path: "/novaFilial", label: "Nova Filial"},
+        {path: "/novaAplicacao", label: "Nova Aplicacao"}
+
     ];
 
     const menuFornecedor = [
