@@ -5,6 +5,7 @@ import NovoUsuario from "../pages/NovoUsuario/NovoUsuario"
 import NovaFilial from "../pages/novaFilial/NovaFilial"
 import NovaAplicacao from "../pages/NovaAplicacao/NovaAplicacao"
 import NovoFornecedor from "../pages/NovoFornecedor/NovoFornecedor"
+import BuscarFornecedor from "../pages/PaginaBuscaFornecedor/BuscarFornecedor"
 
 function Rotas() {
   return (
@@ -17,6 +18,7 @@ function Rotas() {
                 <Route path="/novaFilial" element={<NovaFilial />}/>
                 <Route path="/novaAplicacao" element={<NovaAplicacao />}/>
                 <Route path="/novoFornecedor" element={<NovoFornecedor />}/>
+                <Route path="/buscarNovoFornecedor" element={<BuscarFornecedor />}/>
             </Routes>
         </Router>
     </>
