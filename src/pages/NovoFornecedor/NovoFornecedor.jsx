@@ -82,8 +82,8 @@ function NovoFornecedor() {
                         {listaContato.map(item => (
                             <tr>
                                 <td id="idUsuario">{item.nomeContato}</td>
-                                <td id="nomeUsuario">{item.emails[0].email}</td>
-                                <td>{item.telefones[0].telefone}</td>
+                                <td id="nomeUsuario">{item.emails  && item.emails.length > 0  ? item.emails[0].email : []}</td>
+                                <td>{item.telefones && item.telefones.length > 0 ? item.telefones[0].telefone : []}</td>
                             </tr>
                         ))}
                     <tbody>

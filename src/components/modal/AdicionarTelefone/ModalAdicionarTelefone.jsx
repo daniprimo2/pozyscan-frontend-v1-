@@ -11,26 +11,30 @@ function ModalAdicionarTelefone({mostrarModal, setLista, lista}) {
     const [contatoTelefone, setContatoTelefone] = useState()
     const [tipoTelefone, setTipoTelefone] = useState()
 
-
     const contato = {
         nomeContato: contatoNome,
-        emails: [
-            {
-                email: contatoEmail,
-                tipo: tipoEmail
-            }
-        ],
-        telefones: [
-            {
-                telefone: contatoTelefone,
-                tipo: tipoTelefone
-            }
-        ]
+        emails: [],
+        telefones: []
 
     }
 
     const handlerSubmit = (e) => {
         e.preventDefault()
+
+
+        if (contatoEmail != null) {
+            console.log("Inserindo email")
+            contato.emails = [{email: contatoEmail, tipo: tipoEmail}];
+        }
+
+
+        if (contatoTelefone != null) {
+            console.log("Inserindo telefone")
+            contato.telefones = [{telefone: contatoTelefone, tipo: tipoTelefone}];
+        }
+
+        console.log(contato)
+
         setLista([...lista, contato])    
 
         mostrarModal(false)
@@ -81,7 +85,7 @@ function ModalAdicionarTelefone({mostrarModal, setLista, lista}) {
                 <input type="text"
                        value={contatoTelefone}
                        onChange={(e) => setContatoTelefone(e.target.value)}
-                       placeholder='Email' /> 
+                       placeholder='Telefone' /> 
             </div>
             <div>
                 <select value={tipoTelefone} onChange={(e) => setTipoTelefone(e.target.value)}>
