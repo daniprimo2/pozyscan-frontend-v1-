@@ -24,7 +24,7 @@ function MenuLateral({mostra, mostraSubMenu, setMostraSubMenu, nomeMenu}) {
     ];
 
     const menuVeiculo = [
-        {path: "/home", label: "Novo Veiculo"},
+        {path: "/novoVeiculo", label: "Novo Veiculo"},
         {path: "/home", label: "Buscar Veiculos"},
         {path: "/home", label: "Deletar Veiculo"}
     ];
