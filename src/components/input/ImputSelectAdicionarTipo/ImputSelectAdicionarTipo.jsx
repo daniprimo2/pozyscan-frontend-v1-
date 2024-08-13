@@ -24,7 +24,7 @@ function ImputSelectAdicionarTipo({placeholder, controleModal,  listaOpcoes, dad
             <option value={""}>{label}</option>
 
             {listaOpcoes.map((item, index) => (
-                <option value={item.nome} key={index}>{item.nome}</option>
+                <option value={item.id} key={index}>{item.nome}</option>
             ))}
         </select>
         <IoMdAddCircle id='addIcon' onClick={(e) => handlerAdicionar(e)}/>
