@@ -4,6 +4,13 @@ import CampoSimples from '../CampoMenuSimples/Campo';
 
 function MenuLateral({mostra, mostraSubMenu, setMostraSubMenu, nomeMenu}) {
  
+     
+    const menuLancamento = [
+        {path: "/novoLancamento", label: "Novo Lançamentos"},
+        {path: "/buscarLancamentos", label: "Buscar Lancamentos"}
+
+    ];
+
     const menuAdministracao = [
         {path: "/novoUsuario", label: "Novo Usuario"},
         {path: "/novaFilial", label: "Nova Filial"},
@@ -47,8 +54,7 @@ function MenuLateral({mostra, mostraSubMenu, setMostraSubMenu, nomeMenu}) {
         <Campo nomeMenu={"Fornecedor"} listaSubMenus={menuFornecedor}/>
         <Campo nomeMenu={"Categoria"} listaSubMenus={menuCategoria}/>
         <Campo nomeMenu={"Veiculo"} listaSubMenus={menuVeiculo}/>
-
-        
+        <Campo nomeMenu={"Lancamento"} listaSubMenus={menuLancamento}/>        
     </div>
   )
 }
