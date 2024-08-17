@@ -19,3 +19,18 @@ export const salvarLancamento = (data) => {
     const url = `/lancamento/novo`
     return baseAutenticar.post(url, data);
 }
+
+export const buscarLancamentosComFiltros = (data) => {
+    const url = `/lancamento/buscaLancamentos/comFiltro`
+    return baseAutenticar.post(url, data);
+}
+
+export const buscarAsPecelas = (data) => {
+    const url = `/lancamento/buscaParcelas/comFiltro`
+    return baseAutenticar.post(url, data)
+}
+
+export const deletarLancamentos = (idLancamento) => {
+    const url = `/lancamento/deletarLancamentos/${idLancamento}`
+    return baseAutenticar.delete(url);
+}
