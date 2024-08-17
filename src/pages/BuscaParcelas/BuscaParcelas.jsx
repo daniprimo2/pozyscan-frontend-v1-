@@ -58,6 +58,7 @@ function BuscaParcelas() {
   return (
     <Layout>
         <div className="container">
+            <h1>Compromissos de pagamento</h1>
             <div className="list-component">
                 <div className="filters">
                     <h2>Filtrar por: </h2>

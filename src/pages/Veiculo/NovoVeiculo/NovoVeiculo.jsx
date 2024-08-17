@@ -10,6 +10,7 @@ import ModalNovaCategoria from '../../../components/modal/NovaCategoria/ModalNov
 import ModalNovaTipo from '../../../components/modal/NovoTipo/ModalNovaTipo';
 import { toast } from 'react-toastify';
 import BuscarVeiculos from '../../../components/Tabela/BuscarVeiculos/BuscarVeiculos';
+import LoadingSpinner from '../../../components/Loading/LoadingSpinner';
 
 
 function NovoVeiculo() {
@@ -28,6 +29,8 @@ function NovoVeiculo() {
 
     const [isModalOpenTipo, setIsModalOpenTipo] = useState(false);
     const [isModalOpenCategoria, setIsModalOpenCategoria] = useState(false);
+    const [loading, setLoading] = useState(false)
+
 
 
     const data = {
@@ -40,11 +43,14 @@ function NovoVeiculo() {
 
     const handlerAdicionarNovoVeiculo = (data) => {
         adicionarVeiculo(data).then((resp) => {
+            setLoading(false)
             toast.success('Veiculo de placa '+ resp.data.placa 
             + " registrada com sucesso.")
             setAtualizar(!atualizar)
         }).catch((e) => {
-            toast.error("Veiculo não foi registrado.")
+            setLoading(false)
+            console.log(e)
+            toast.error("Placa deve ser inserida")
         })
     }
 
@@ -68,11 +74,12 @@ function NovoVeiculo() {
 
     const handlerSubmit = (event) => {
         event.preventDefault()
-        console.log(data)
-        handlerAdicionarNovoVeiculo(data)
-        setPlaca('')
-        setModelo('')
-        setAno('')
+        setLoading(true)
+            handlerAdicionarNovoVeiculo(data)
+            setPlaca('')
+            setModelo('')
+            setAno('')
+        
     }
 
     const handlerAtualizar = () => {setAtualizar(!atualizar)}
@@ -129,6 +136,7 @@ function NovoVeiculo() {
             {isModalOpenCategoria && <ModalNovaCategoria mostrarModal={modalCategoria}/>}
             {isModalOpenTipo && <ModalNovaTipo mostrarModal={modalTipo}/>}
 
+            {loading && <LoadingSpinner mensagem={"Carregando........"}/>}
 
         </div>
     </Layout>

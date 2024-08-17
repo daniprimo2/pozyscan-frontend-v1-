@@ -4,11 +4,13 @@ import './main.sass'
 import { buscarLancamentosComFiltros, deletarLancamentos } from '../../services/Lancamento/Lancamento';
 import { toast } from 'react-toastify';
 import { RiDeleteBin5Line } from "react-icons/ri";
+import LoadingSpinner from '../../components/Loading/LoadingSpinner';
 
 function BuscaLancamentos() {
     const [numeroNf, setNumeroNf] = useState('')
     const [statusNotaFiscal, setStatusNotaFiscal] = useState('')
     const [listaLancamentos, setListaLancamentos] = useState([])
+    const [loading, setLoading] = useState(false)
 
     const [atualizar, setAtualziar] = useState(false)
     
@@ -18,9 +20,14 @@ function BuscaLancamentos() {
     }
 
     const handlerBuscarLancamentos = (data) => {
+        setLoading(true)
+
         buscarLancamentosComFiltros(data).then((resp) => {
             setListaLancamentos(resp.data)
+            setLoading(false)
+
         }).catch(() => {
+            setLoading(false)
             toast.error("API fora para buscar lancamentos")
         })
     }
@@ -36,11 +43,14 @@ function BuscaLancamentos() {
     
     const handleDelete = (event, id) => {
         event.preventDefault();
+        setLoading(true)
         deletarLancamentos(id).then((resp) => {
             toast.success(resp.data.descricao)
             handlerBuscarLancamentos(data)
             setAtualziar(!atualizar)
+            setLoading(false)
         }).catch((e) => {
+            setLoading(false)
             toast.error("Não foi possivel mandar a reqquisição de delete")
         })
     }
@@ -53,6 +63,7 @@ function BuscaLancamentos() {
   return (
     <Layout>
         <div className="container">
+            <h1>Lançamentos de dispesas</h1>
             <div className="list-component">
                 <div className="filters">
                     <h2>Filtrar por: </h2>
@@ -100,6 +111,8 @@ function BuscaLancamentos() {
             </table>
             </div>
         </div>
+        {loading && <LoadingSpinner mensagem={"Carregando........"}/>}
+
     </Layout>
   )
 }

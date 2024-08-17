@@ -8,6 +8,7 @@ import { buscarAsNotas, buscarOpcoesSelects, salvarLancamento } from '../../serv
 import AdicionarNotaFiscal from '../../components/modal/AdicionarNotaFiscal/AdicionarNotaFiscal';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import LoadingSpinner from '../../components/Loading/LoadingSpinner';
 
 
 function NovoLancamento() {
@@ -34,6 +35,7 @@ function NovoLancamento() {
     const [listaDasNotasFiscais, setListaDasNotasFiscais] = useState([])
 
     const [mostrarNotaFiscal, setMostrarNotaFiscal] = useState(false)
+    const [loading, setLoading] = useState(false)
 
 
     const data = {
@@ -107,11 +109,15 @@ function NovoLancamento() {
 
     
     const handlerSubmitSalvarLancamento = (e) => {
+        setLoading(true)
         e.preventDefault()
         salvarLancamento(data).then((resp) => {
             navigate(0)
             toast.success(resp.data.descricao);
-        }).catch(() => {})
+        }).catch(() => {
+        setLoading(false)
+
+        })
     }
 
 
@@ -184,6 +190,8 @@ function NovoLancamento() {
             {isModalAdicioanrNotaFiscal && <AdicionarNotaFiscal modalNotaFiscal={setIsModalAdicioanrNotaFiscal} notaFiscal={setNumeroNotaFiscal}/>}
 
         </div>
+        {loading && <LoadingSpinner mensagem={"Carregando........"}/>}
+
     </Layout>
   )
 }

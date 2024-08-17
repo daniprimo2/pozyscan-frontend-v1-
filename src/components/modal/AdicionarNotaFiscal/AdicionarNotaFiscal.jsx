@@ -4,6 +4,8 @@ import ReactInputMask from 'react-input-mask'
 import { NumericFormat } from 'react-number-format'
 import { adicionarNotaFiscal } from '../../../services/Lancamento/Lancamento'
 import { toast } from 'react-toastify'
+import LoadingSpinner from '../../Loading/LoadingSpinner'
+
 
 function AdicionarNotaFiscal({modalNotaFiscal, notaFiscal}) {
     const [numeroNf, setNumeroNf] = useState('')
@@ -12,6 +14,8 @@ function AdicionarNotaFiscal({modalNotaFiscal, notaFiscal}) {
     const [dataPagamento, setDataPagamento] = useState('')
     const [quantidadeParcela, setQuantidadeParcela] = useState()
     const [comprovante, setComprovante] = useState('')
+    const [loading, setLoading] = useState(false)
+
 
     const data = {
         numeroNotaFiscal: numeroNf,
@@ -39,11 +43,16 @@ function AdicionarNotaFiscal({modalNotaFiscal, notaFiscal}) {
     };
 
     const handlerGerarNovaNF = (data) => {
+        setLoading(true)
         adicionarNotaFiscal(data).then((resp) => {
             toast.success("Nota " + resp.data.numero + " gerada com sucesso.")
             notaFiscal(resp.data.numero)
             modalNotaFiscal(false)
+            setLoading(false)
+
         }).catch((e) => {
+            setLoading(false)
+
             toast.error("Nota não foi gerada")
         })
     }
@@ -75,7 +84,9 @@ function AdicionarNotaFiscal({modalNotaFiscal, notaFiscal}) {
                         placeholder='Nº Nota Fiscal'
                     />
                 </label>
-                <div>
+                <label>
+                    Qual forma de pagamento:
+                    <div>
                     <select value={formaPagamento} onChange={(e) => setFormaPagamento(e.target.value)}>
                         <option value="" disabled>Forma de Pagamento</option>
                         <option value="A_VISTA">Ávista</option>
@@ -83,7 +94,9 @@ function AdicionarNotaFiscal({modalNotaFiscal, notaFiscal}) {
                         <option value="PARCELADO">Parcelado</option>
                     </select>
                 </div>
+                </label>
                 <label>
+                    Valor total da nota:
                     <NumericFormat
                         value={valorNota}
                         thousandSeparator="."
@@ -94,9 +107,14 @@ function AdicionarNotaFiscal({modalNotaFiscal, notaFiscal}) {
                         decimalScale={2}
                         fixedDecimalScale={true}
                     />
+                </label>
+                <label>
+                    Data do vencimento da parcela:
                     <ReactInputMask mask={"99/99/9999"} placeholder='Data do vencimento' value={dataPagamento} onChange={(e) => setDataPagamento(e.target.value)}/>
                 </label>
+                <label>
                 <div>
+                    Em quantas vezes deseja parcelas:
                     <select value={quantidadeParcela} onChange={(e) => setQuantidadeParcela(e.target.value)}>
                         <option value="" disabled>Quantidade de Parcela</option>
                         <option value={0}></option>
@@ -104,8 +122,12 @@ function AdicionarNotaFiscal({modalNotaFiscal, notaFiscal}) {
                         <option value={3}>3x</option>
                         <option value={5}>5x</option>
                         <option value={7}>7x</option>
+                        <option value={10}>10x</option>
+                        <option value={12}>12x</option>
                     </select>
                 </div>
+                </label>
+
                 <label>
                     Comprovante PDF:
                     <input
@@ -116,7 +138,12 @@ function AdicionarNotaFiscal({modalNotaFiscal, notaFiscal}) {
                 </label>
                 {comprovante && (<button className='botao' onClick={(e) => handlerSubmit(e)}>ADD NF</button>)}
             </div>
+
+
+            {loading && <LoadingSpinner mensagem={"Carregando........"}/>}
+
         </div>
+        
     );
 }
 
