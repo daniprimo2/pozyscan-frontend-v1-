@@ -20,8 +20,7 @@ function MenuLateral({mostra, mostraSubMenu, setMostraSubMenu, nomeMenu}) {
 
     const menuFornecedor = [
         {path: "/novoFornecedor", label: "Novo Fornecedor"},
-        {path: "/buscarNovoFornecedor", label: "Buscar Fornecedor"},
-        {path: "/home", label: "Deletar Fornecedor"}
+        {path: "/buscarNovoFornecedor", label: "Buscar Fornecedor"}
     ];
 
     const menuCategoria = [
@@ -31,9 +30,7 @@ function MenuLateral({mostra, mostraSubMenu, setMostraSubMenu, nomeMenu}) {
     ];
 
     const menuVeiculo = [
-        {path: "/novoVeiculo", label: "Novo Veiculo"},
-        {path: "/home", label: "Buscar Veiculos"},
-        {path: "/home", label: "Deletar Veiculo"}
+        {path: "/novoVeiculo", label: "Novo Veiculo"}
     ];
 
     const menuGerenciador = [
@@ -49,10 +46,8 @@ function MenuLateral({mostra, mostraSubMenu, setMostraSubMenu, nomeMenu}) {
         <h1 id="logo">POZYSCAN</h1>
 
         <CampoSimples nomeMenu={"Home"} />
-        <Campo nomeMenu={"Gerenciador"} listaSubMenus={menuGerenciador}/>
         <Campo nomeMenu={"Administracao"} listaSubMenus={menuAdministracao}/>
         <Campo nomeMenu={"Fornecedor"} listaSubMenus={menuFornecedor}/>
-        <Campo nomeMenu={"Categoria"} listaSubMenus={menuCategoria}/>
         <Campo nomeMenu={"Veiculo"} listaSubMenus={menuVeiculo}/>
         <Campo nomeMenu={"Lancamento"} listaSubMenus={menuLancamento}/>        
     </div>
