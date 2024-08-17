@@ -22,6 +22,7 @@ function NovoFornecedor() {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
 
+
     const data = {
       nome: nome,
       cnpj: cnpj,
@@ -43,6 +44,7 @@ function NovoFornecedor() {
 
     const handlerAdicionar = (e) => {
       e.preventDefault()
+      setMostrarCarregando(true)
       addFornecedor(data)
     }
 

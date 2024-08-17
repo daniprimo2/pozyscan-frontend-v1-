@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
 import { adicionarCategoria, adicionarTipo } from '../../../services/Veiculo/veiculo';
 import { toast } from 'react-toastify';
+import LoadingSpinner from '../../Loading/LoadingSpinner';
 
 function ModalNovaTipo({mostrarModal}) {
     const [nomeTipo, setNomeTipo] = useState('');
     const [descricaoTipo, setDescricaoTipo] = useState('');
+    const [loading, setLoading] = useState(false)
+
 
     const data = {
         nome: nomeTipo,
@@ -15,7 +18,9 @@ function ModalNovaTipo({mostrarModal}) {
         adicionarTipo(data).then((resp) => {
             toast.success("Tipo " + resp.data.nome + " foi cadastrada com sucesso.")
             mostrarModal(false)
+            setLoading(false)
         }).catch((e) => {
+            setLoading(false)
             toast.error("Falha ao cadastrar tipo.")
         })
     }
@@ -24,6 +29,7 @@ function ModalNovaTipo({mostrarModal}) {
     
     const handlerSubmit = (e) => {
         e.preventDefault()
+        setLoading(true)
         handlerAdicionarTipo(data)
         mostrarModal(false)
     }
@@ -54,6 +60,8 @@ function ModalNovaTipo({mostrarModal}) {
             <button onClick={(e) => handlerSubmit(e)}>Salvar</button>
             <button onClick={(e) => handlerExit(e)}>Fechar</button>
         </div>
+        {loading && <LoadingSpinner mensagem={"Carregando........"}/>}
+
     </div>
   )
 }

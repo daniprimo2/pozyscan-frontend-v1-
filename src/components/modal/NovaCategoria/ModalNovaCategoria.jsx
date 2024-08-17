@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
 import { adicionarCategoria } from '../../../services/Veiculo/veiculo';
 import { toast } from 'react-toastify';
+import LoadingSpinner from '../../Loading/LoadingSpinner';
 
 function ModalNovaCategoria({mostrarModal}) {
     const [nomeCategoria, setNomeCategoria] = useState('');
     const [descricaoCategoria, setDescricaoCategoria] = useState('');
+    const [loading, setLoading] = useState(false)
+
 
     const data = {
         nome: nomeCategoria,
@@ -15,7 +18,9 @@ function ModalNovaCategoria({mostrarModal}) {
         adicionarCategoria(data).then((resp) => {
             toast.success("Categoria " + resp.data.nome + " foi cadastrada com sucesso.")
             mostrarModal(false)
+            setLoading(false)
         }).catch((e) => {
+            setLoading(false)
             toast.error("Falha ao cadastrar categoria.")
         })
     }
@@ -24,6 +29,7 @@ function ModalNovaCategoria({mostrarModal}) {
     
     const handlerSubmit = (e) => {
         e.preventDefault()
+        setLoading(true)
         handlerAdicionarCategoria(data)
         mostrarModal(false)
     }
@@ -54,6 +60,8 @@ function ModalNovaCategoria({mostrarModal}) {
             <button onClick={(e) => handlerSubmit(e)}>Salvar</button>
             <button onClick={(e) => handlerExit(e)}>Fechar</button>
         </div>
+        {loading && <LoadingSpinner mensagem={"Carregando........"}/>}
+
     </div>
   )
 }
