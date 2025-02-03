@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import Layout from '../../components/Layout/Layout';
 import './main.sass'
-import { buscarAsPecelas, buscarLancamentosComFiltros } from '../../services/Lancamento/Lancamento';
+import { buscarAsPecelas, buscarLancamentosComFiltros, registrarPagamento } from '../../services/Lancamento/Lancamento';
 import { toast } from 'react-toastify';
-import { RiDeleteBin5Line } from "react-icons/ri";
+import { SlClose } from "react-icons/sl";
+import { FcCheckmark } from "react-icons/fc";
+
 
 function BuscaParcelas() {
     const [numeroNf, setNumeroNf] = useState('')
@@ -11,12 +13,20 @@ function BuscaParcelas() {
     const [centroDeCusto, setCentroDeCusto] = useState('')
     const [dataVencimento, setDataDeVencimento] = useState('')
     const [listaLancamentos, setListaLancamentos] = useState([])
+
+    const [controle, setControle] = useState(false);
     
     const data = {
         numeroNotaFiscal: numeroNf,
         statusPagamentos: statusNotaFiscal,
         centroDeCusto: centroDeCusto,
         dataVencimento: dataVencimento
+    }
+
+    const handlerRegistrarPagamento = (codigoParcela, numeroDaNotaFiscal) => {
+        registrarPagamento(codigoParcela, numeroDaNotaFiscal).then((resp) => {
+            setControle(!controle);
+        })
     }
 
     const handlerBuscarLancamentos = (data) => {
@@ -53,7 +63,7 @@ function BuscaParcelas() {
     useEffect(() => {
         setListaLancamentos([])
         handlerBuscarLancamentos(data)
-    }, [numeroNf, statusNotaFiscal, dataVencimento, centroDeCusto])
+    }, [numeroNf, statusNotaFiscal, dataVencimento, centroDeCusto, controle])
 
   return (
     <Layout>
@@ -100,6 +110,7 @@ function BuscaParcelas() {
                     <th>Descricao parcela</th>
                     <th>Status</th>
                     <th>Valor</th>
+                    <th></th>
                 </thead>
                 <tbody>
                     {listaLancamentos.map(item => (
@@ -111,6 +122,7 @@ function BuscaParcelas() {
                             <td>{item.descricaoParcela}</td>
                             <td>{item.statusPagamento}</td>
                             <td>{item.valorParcela && "R$ "+item.valorParcela}</td>
+                            <td>{item.statusPagamento == 'EM_ABERTO' ? <SlClose onClick={() => handlerRegistrarPagamento(item.id, item.notaFiscalNumeroNf)} /> : <FcCheckmark />}</td>
                         </tr>
                     ))}
                 </tbody>

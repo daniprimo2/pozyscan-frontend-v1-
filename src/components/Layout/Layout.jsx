@@ -7,7 +7,7 @@ import MenuLateral from "../MenuLateral/MenuLateral";
 import './main.sass'
 
 function Layout({children}) {
-    const [mostrarLateral, setMostraLateral] = useState(true)
+    const [mostrarLateral, setMostraLateral] = useState(false)
     const [mostraSubMenu, setMostraSubMenu] = useState(false)
     const navigate = useNavigate();
   return (

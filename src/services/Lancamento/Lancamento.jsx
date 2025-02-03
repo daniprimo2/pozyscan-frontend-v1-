@@ -34,3 +34,8 @@ export const deletarLancamentos = (idLancamento) => {
     const url = `/lancamento/deletarLancamentos/${idLancamento}`
     return baseAutenticar.delete(url);
 }
+
+export const registrarPagamento = (id, numeroNotaFiscal) => {
+    const url = `/lancamento/registrarPagamento?id=${id}&notaFiscal=${numeroNotaFiscal}`;
+    return baseAutenticar.post(url);
+}

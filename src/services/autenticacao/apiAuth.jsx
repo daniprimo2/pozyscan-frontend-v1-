@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 export const baseAutenticar = axios.create({
-    baseURL: "https://pozyscan-backend-v1.onrender.com/",
+    baseURL: "http://localhost:8080",
     headers: {
         'Accept': '*/*',
         'Content-Type': 'application/json'

@@ -39,18 +39,26 @@ function MenuLateral({mostra, mostraSubMenu, setMostraSubMenu, nomeMenu}) {
         {path: "/home", label: "Gerenciar Nota Fiscal"}
     ];
 
+    function menu({mostra, mostraSubMenu, setMostraSubMenu, nomeMenu}){
+        return (    
+        <div className={mostra ? "active" : "sidenav"}>
+            <h1 id="logo">POZYSCAN</h1>
 
+            <CampoSimples nomeMenu={"Home"} />
+            <Campo nomeMenu={"Administracao"} listaSubMenus={menuAdministracao}/>
+            <Campo nomeMenu={"Fornecedor"} listaSubMenus={menuFornecedor}/>
+            <Campo nomeMenu={"Veiculo"} listaSubMenus={menuVeiculo}/>
+            <Campo nomeMenu={"Lancamento"} listaSubMenus={menuLancamento}/>        
+        </div>
+        )
+    }
 
     return (
-    <div className={mostra ? "active" : "sidenav"}>
-        <h1 id="logo">POZYSCAN</h1>
 
-        <CampoSimples nomeMenu={"Home"} />
-        <Campo nomeMenu={"Administracao"} listaSubMenus={menuAdministracao}/>
-        <Campo nomeMenu={"Fornecedor"} listaSubMenus={menuFornecedor}/>
-        <Campo nomeMenu={"Veiculo"} listaSubMenus={menuVeiculo}/>
-        <Campo nomeMenu={"Lancamento"} listaSubMenus={menuLancamento}/>        
-    </div>
+        <>
+            {mostra ? menu(mostra, mostraSubMenu, setMostraSubMenu, nomeMenu) : null}
+        </>
+   
   )
 }
 

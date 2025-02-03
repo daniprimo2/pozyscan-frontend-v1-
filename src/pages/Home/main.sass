@@ -1,0 +1,20 @@
+.quadros
+    display: flex
+    justify-content: space-between
+    flex-wrap: wrap
+
+
+.graficos
+    display: flex
+    margin-top: 1vh
+    height: 55vh
+    padding: 1vh
+    .grafico-linha
+        width: 50%
+
+@media (max-width: 700px)
+    .graficos
+        flex-direction: column
+        .grafico-linha
+            width: 100%
+
